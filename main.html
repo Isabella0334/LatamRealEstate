@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Latam Real Estate</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
+  padding-top: 100px;
+}
+
+.form-container {
+            width: 40%;
+            margin: 10px auto;
+            background-color: #fff;
+        }
+
+
+.form-group {
+            margin-bottom: 1px;
+}
+
+.content {
+            font-size: 16px;
+            color: #555;
+            text-align: justify; /* Justificar texto */
+            padding: 5px;
+        }
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: #c9c9c9;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  color: #777;
+  line-height: 1.8;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  background-color: #545454;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Mantener el navbar visible */
+  top: 0; /* Fijar en la parte superior */
+  width: 100%; /* Abarcar todo el ancho de la pantalla */
+  z-index: 1000; /* Asegurarse de que esté encima de otros elementos */
+}
+
+
+.navbar-logo {
+  width: 150px; /* Ajusta el tamaño del logo */
+  height: auto; /* Mantiene la proporción del logo */
+  margin-bottom: 1px; /* Espacio entre el logo y los botones */
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+button {
+  padding: 10px 20px; /* Tamaño de los botones */
+  font-size: 16px; /* Tamaño del texto de los botones */
+  background-color: #545454; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por el botón */
+}
+
+button:hover {
+  background-color: #9f9f9f; /* Color del botón al pasar el mouse */
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .contact-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-details p {
+            margin: 15px 0;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+
+        /* Enlace del correo */
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+  @media (max-width: 768px) {
+        .contact-container {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .contact-image {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.wide-text {
+  letter-spacing: 10px;
+}
+
+.hover-opacity {
+  cursor: pointer;
+}
+
+.container {
+  padding: 50px;
+}
+
+.progress-bar {
+  background-color: #ddd;
+  position: relative;
+  height: 24px;
+  width: 100%;
+}
+
+.progress-bar div {
+  height: 100%;
+  background-color: #333;
+  text-align: center;
+  line-height: 24px;
+  color: white;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+input[type="text"], input[type="number"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+#searchInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+</style>
+</head>
+<body>
+
+<div class="navbar" id="myNavbar">
+  <img src="logo.png" alt="Latam Real Estate Logo" class="navbar-logo">
+  <div class="navbar-buttons">
+  <a href="#nosotros">NOSOTROS</a>
+  <a href="#propiedades">PROPIEDADES</a>
+  <a href="#servicio">SERVICIOS</a>
+  <a href="#contacto">CONTACTO</a>
+  <a href="javascript:void(0);" class="icon" onclick="toggleFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+</div>
+
+<div class="container" id="nosotros">
+    <br><br><br><br><br> 
+    <span class="wide-text">¿Quiénes somos?</span>
+    <div class="content">
+        En <strong>Latam Real Estate</strong>, nuestra misión es conectar a migrantes guatemaltecos con oportunidades de inversión seguras en su país de origen. Sabemos lo importante que es para ti mantener un vínculo con Guatemala y asegurar el futuro de tu familia, por eso, nos especializamos en ofrecer un servicio confiable que te permita adquirir propiedades desde el extranjero, con la tranquilidad de que tu inversión está protegida y llegará al destino correcto.<br><br>  
+        Nuestro equipo combina experiencia en el mercado inmobiliario guatemalteco con un profundo entendimiento de las necesidades y preocupaciones de quienes viven fuera del país. Nos encargamos de cada detalle del proceso de compra, desde la búsqueda de propiedades hasta la gestión de pagos, brindándote un servicio personalizado y transparente en cada paso.<br><br>      
+        Con <strong>Latam Real Estate</strong>, invertir en Guatemala desde cualquier parte del mundo es más fácil que nunca. Nos enorgullece ayudarte a construir un futuro seguro y próspero en tu tierra natal.
+    </div>
+</div>
+
+<div class="container" id="propiedades">
+  <h2>PROPIEDADES</h2>
+  <input type="text" id="searchInput" placeholder="Buscar propiedades..." onkeyup="searchProperties()">
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="imagenes/imagen1.jpg" width="400" height="300">
+        <div class="container">
+            <h4><b>Apartamento en Narama, Zona 15, Ciudad de Guatemala</b></h4>
+            <div class="content">
+                <b>Descripción</b>: Moderno apartamento de 2 habitaciones y 2 baños completos en el exclusivo edificio Narama, Zona 15. El apartamento tiene un diseño contemporáneo con espacios abiertos, una cocina equipada con acabados de lujo, balcón con vista panorámica, y área de lavandería. El edificio ofrece amenidades como piscina, gimnasio y seguridad las 24 horas.
+            </div>
+            <p><b>Precio de venta:</b> Q1,100,000</p>
+        </div>
+    </div>
+    </div>
+
+    <div class="column">
+
+      <div class="card">
+        <img src="imagenes/imagen2.jpg" width="400" height="300">
+        <div class="container">
+            <h4><b>Apartamento en Parque San Jorge, Zona 11, Ciudad de Guatemala</b></h4>
+            <div class="content">
+              <b>Descripción</b> Cómodo apartamento de 3 dormitorios y 2 baños en el complejo residencial Parque San Jorge, Zona 11. Cuenta con sala y comedor amplios, cocina con gabinetes de madera, y un pequeño balcón. El edificio incluye parqueo para dos vehículos, seguridad las 24 horas, áreas verdes, y un parque para niños, ideal para familias.
+            </div>
+            <p><b>Precio de venta:</b> Q950,000</p>
+        </div>
+    </div>
+      
+    </div>
+
+  <div class="column">
+
+    <div class="card">
+      <img src="imagenes/imagen3.jpg" width="400" height="300">
+      <div class="container">
+          <h4><b>Apartamento en Vistares, Zona 12, Ciudad de Guatemala</b></h4>
+          <div class="content">
+            <b>Descripción</b>  Espacioso apartamento en Vistares, un proyecto de lujo en la Zona 12, que cuenta con 3 habitaciones, 2 baños, cocina integrada con barra tipo isla, y sala con acceso a una terraza privada. Las instalaciones del edificio incluyen salón social, piscina, gimnasio, y una espectacular vista de la ciudad desde el rooftop. Perfecto para quienes buscan confort y estilo de vida exclusivo.
+          </div>
+          <p><b>Precio de venta:</b> Q1,500,000</p>
+      </div>
+  </div>
+
+  </div>
+
+  </div>
+</div>
+
+<!-- Skills Section -->
+<div class="container" id="servicio">
+  <h2>SERVICIOS</h2>
+  <div class="form-container" ></div>
+    <h4>Formulario para Clasificación de Servicios</h4>
+    <form id="classificationForm">
+        <div class="form-group">
+            <label for="name">Nombre Completo:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="occupation">Ocupación:</label>
+            <input type="text" id="occupation" required>
+        </div>
+        <div class="form-group">
+            <label for="income">¿Cuánto ganas mensualmente? (USD):</label>
+            <input type="number" id="income" required>
+        </div>
+        <div class="form-group">
+            <label for="timeAbroad">¿Cuánto tiempo llevas viviendo fuera de Guatemala? (Años):</label>
+            <input type="number" id="timeAbroad" required>
+        </div>
+        <div class="form-group">
+            <label for="family">¿Tienes familiares en Guatemala?</label>
+            <select id="family" required>
+                <option value="">Selecciona una opción</option>
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div class="result" id="result"></div>
+</div>
+</div>
+
+  <div class="container" id="contacto">
+    <h2>CONTACTO</h2>
+    <div class="row">
+      <div class="column">
+        <div class="contact-image">
+            <img src="imagenes/imagencontacto.jpg" alt="Imagen de Contacto" width="400" height="300">
+        </div>
+      </div>
+      <div class="column"></div>
+      <div class="contact-details">
+        <p>¡Estamos aquí para ayudarte! Si tienes preguntas sobre cómo invertir en propiedades en Guatemala, no dudes en contactarnos. Estamos disponibles para resolver tus dudas y guiarte en tu inversión.</p>
+
+        <p><i class="fa fa-envelope"></i> Correo: <a href="mailto:info@latamrealestate.com">info@latamrealestate.com</a></p>
+        <p><i class="fa fa-phone"></i> Teléfono: +502 **** ****</p>
+        <p><i class="fa fa-map-marker"></i> Dirección: Ciudad de Guatemala, Guatemala</p>
+    </div>
+      </div>
+    </div>
+  </div>
+
+<div id="modal01" class="modal">
+  <span class="close" onclick="document.getElementById('modal01').style.display='none'">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+function toggleFunction() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  document.getElementById("caption").innerHTML = element.alt;
+}
+
+function searchProperties() {
+  // Obtener el valor del input de búsqueda
+  var input = document.getElementById('searchInput');
+  var filter = input.value.toLowerCase();
+  
+  // Obtener todas las tarjetas de propiedades
+  var cards = document.querySelectorAll('.card');
+  
+  // Recorrer todas las tarjetas y esconder las que no coincidan con el criterio de búsqueda
+  cards.forEach(function(card) {
+    var title = card.querySelector('h4').textContent.toLowerCase();
+    
+    if (title.includes(filter)) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+
+
+document.getElementById('classificationForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evitar que se recargue la página
+
+        const income = parseInt(document.getElementById('income').value);
+        const timeAbroad = parseInt(document.getElementById('timeAbroad').value);
+        const family = document.getElementById('family').value;
+
+        let resultMessage = '';
+        let isQualified = false;
+
+        // Lógica simple de clasificación
+        if (income >= 1000 && timeAbroad >= 1 && family === 'yes') {
+            isQualified = true;
+        } else {
+            isQualified = false;
+        }
+
+        if (isQualified) {
+            resultMessage = '<p class="success">¡Felicidades! Podrías ser clasificado para nuestro servicio. Un agente te contactará pronto.</p>';
+        } else {
+            resultMessage = '<p class="error">Lo sentimos, actualmente no calificas para nuestro servicio. Te invitamos a contactarnos para más información.</p>';
+        }
+
+        // Mostrar el resultado
+        document.getElementById('result').innerHTML = resultMessage;
+    });
+
+
+</script>
+
+</body>
+</html>
