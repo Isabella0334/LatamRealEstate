@@ -29,20 +29,34 @@ body, h1, h2, h3, h4, h5, h6 {
             padding: 5px;
         }
 
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    text-align: center;
-    background-color: #c9c9c9;
+  .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Todas las tarjetas tendrán la misma altura */
+  padding: 20px;
+  background-color: #cdcdcd;
 }
+
+
+.card img {
+  max-height: 200px;
+  object-fit: cover; /* Ajustar la imagen para que no se deforme */
+}
+
 
 .column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
+  flex: 1;
+  max-width: 30%;
+  min-width: 300px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.row {margin: 0 -5px;}
-
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .row:after {
   content: "";
   display: table;
